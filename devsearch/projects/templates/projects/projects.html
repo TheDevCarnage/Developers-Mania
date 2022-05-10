@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{{ message }}
+<h1>Project Template</h1>
+<p>Always bet on Javascript!
+
+    For years, top recruiters in industry have hired fresh engineers based solely on their knowledge of Javascript.  If you want to get a programming job, this is the language to learn! But learning Javascript is complicated!  There's fancy syntax, weird design patterns, and a billion resources online that might be giving you wrong - or even be out of date - information.
+
+    We built this course to solve your problems.  This is the best and most up-to-date resource online for becoming a Javascript professional as quickly as possible. Every minute of this course has been created with one goal in mind: teaching you how to become a great engineer.</p>
+    <h2>Projects</h2>
+    <ul>
+        {% for project in projects %}
+
+        <li>Title:{{ Project.title }}</li>
+
+        {% endfor %}
+    </ul>
+
+    {% endblock content %}
