@@ -1,0 +1,15 @@
+version: '3'
+services:
+  devsearch:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - devsearch:/code
+    environment:
+      - PGUSER=value
+      - PGPASSWORD=value
+      - PGHOST=value
+      - PGHOST=5432
+  postgtres:
+    image: 'postgres:latest'
