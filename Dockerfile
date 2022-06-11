@@ -1,4 +1,4 @@
-# Base Imaghe
+# Base Image
 FROM python:3.9
 
 ENV PYTHONBUFFERED 1
@@ -16,11 +16,12 @@ RUN pip install -U pipenv
 # install project dependencies
 RUN pipenv install --system
 
+# copy entrypoint.sh
+COPY ./entrypoint.sh .
+RUN sed -i 's/\r$//g' /code/entrypoint.sh
+RUN chmod +x /code/entrypoint.sh
+
 # copy all files and directories from <src> to <dest>
 COPY . .
 
-# expose the port
-EXPOSE 8000
-
-# Command to run
-CMD ["python", "devsearch/manage.py", "runserver", "0.0.0.0:8000"]
+ENTRYPOINT ["/devsearch/entrypoint.sh"]
