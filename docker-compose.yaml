@@ -2,14 +2,27 @@ version: '3'
 services:
   devsearch:
     build: .
+    container_name: devsearch
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - db
     ports:
       - "8000:8000"
     volumes:
-      - devsearch:/code
+      - . :/code
     environment:
-      - PGUSER=value
-      - PGPASSWORD=value
-      - PGHOST=value
-      - PGHOST=5432
-  postgtres:
-    image: 'postgres:latest'
+      - PGNAME=postgres
+      - PGUSER=postgres
+      - PGPASSWORD=postgres
+      - PGHOST=db
+
+  db:
+    image: postgres
+    container_name: postgres_db
+    restart: always
+    volumes:
+      - pgdata:/var/lib/posgresql/data
+    ports:
+      - 5432:5432
+volumes:
+  pgdata:
