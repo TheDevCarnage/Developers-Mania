@@ -13,6 +13,8 @@ psycopg2 = "*"
 pre-commit = "*"
 black = "*"
 click = "*"
+coverage = "*"
+flake8 = "*"
 
 [dev-packages]
 
