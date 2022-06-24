@@ -33,7 +33,7 @@ jobs:
         pipenv install --system
     - name: Run Tests
       run: |
-        python manage.py test
+        cd devsearch && python manage.py test
 
   dependency-review:
     runs-on: ubuntu-latest
