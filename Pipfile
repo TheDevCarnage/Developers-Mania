@@ -13,6 +13,8 @@ psycopg2 = "*"
 pre-commit = "*"
 black = "*"
 click = "*"
+pillow = "*"
+whitenoise = "==0.13"
 
 [dev-packages]
 
