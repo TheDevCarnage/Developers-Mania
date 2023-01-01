@@ -5,8 +5,7 @@ from .models import Project
 from .forms import ProjectForm
 
 # Create your views here.
-logger = logging
-logger.basicConfig(filename="views.py", encoding="utf-8", level=logging.DEBUG)
+logger = logging.getLogger()
 
 
 def projects(request):
@@ -30,7 +29,7 @@ def create_project(request):
         form = ProjectForm()
         if request.method == "POST":
             logger.info("Validating all the fields of form")
-            form = ProjectForm(request.POST)
+            form = ProjectForm(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
 
@@ -48,7 +47,7 @@ def update_project(request, pk):
         form = ProjectForm(instance=project)
         if request.method == "POST":
             logger.info("Validating all the fields of form.")
-            form = ProjectForm(request.POST, instance=project)
+            form = ProjectForm(request.POST, request.FILES, instance=project)
             if form.is_valid():
                 form.save()
                 logger.info(f"Record for project {form} updated succesfully.")
